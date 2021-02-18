@@ -9,7 +9,7 @@ STOP_HOTKEY = Key.f4
 logging.basicConfig(filename = ("log.txt"), level = logging.DEBUG, format="%(asctime)s: %(message)s")
 
 with open("log.txt", "w"):
-    pass
+	pass
 
 def on_press(key):
 	if key != STOP_HOTKEY:
