@@ -28,12 +28,11 @@ input_mappings = {
 notes = []
 
 def determine_pitch(line):
-	pitch = ""
+	pitch = None
+
 	input = line[(line.find(": ") + 2):].strip("\n")
 	pitch = input_mappings[input]
-	
-	if (pitch == ""):
-		print("Invalid input")
+
 	return pitch
 
 def determine_duration(line, next_line):
@@ -77,9 +76,11 @@ def play_notes():
 	player.set_instrument(0)
 
 	for note in notes:
-		player.note_on(note.pitch, 127)
+		if (note.pitch != None):
+			player.note_on(note.pitch, 127)
 		time.sleep((60 / BPM) * note.duration)
-		player.note_off(note.pitch, 127)
+		if (note.pitch != None):
+			player.note_off(note.pitch, 127)
 
 	del player
 	pygame.midi.quit()
