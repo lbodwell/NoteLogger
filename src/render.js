@@ -14,5 +14,9 @@ stopButton.addEventListener("click", evt => {
 
 playButton.addEventListener("click", evt => {
 	evt.preventDefault();
-	window.electron.readLog();
+	const logContents = window.electron.readLog();
+	logContents.forEach(line => {
+		console.log(line);
+	});
+	// TODO: process log contents into notes
 });

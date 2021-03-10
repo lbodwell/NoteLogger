@@ -6,7 +6,7 @@ const createWindow = () => {
 		width: 800,
 		height: 600,
 		webPreferences: {
-			preload: path.join(__dirname, "script-handler.js")
+			preload: path.join(__dirname, "key-logger-handler.js")
 		}
 	});
 

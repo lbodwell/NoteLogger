@@ -1,0 +1,24 @@
+header{
+	font-family: Arial;
+	margin-left: 50px;
+	font-size: large;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+button{
+	font-family: Arial;
+	font-size: 16px;
+	border: medium black;
+	border-radius: 8px;
+}
+
+div.btnrow{
+	position:center;
+	padding-bottom:10px;
+}
+
+div.cbutton{
+	position:center;
+	margin-left: 75px;
+	padding-bottom: 10px;
+}

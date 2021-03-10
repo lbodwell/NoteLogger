@@ -1,17 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<title>NoteLogger</title>
-		<link rel="stylesheet" href="index.css">
-
+		<link rel="stylesheet" href="style.css">
 		<script defer src="./render.js"></script>
 	</head>
 	<body>
-		<h1>Hello World!</h1>
-		<p>Welcome to NoteLogger.</p>
-		<button id="start-btn">Start</button>
-		<button id="stop-btn">Stop</button>
-		<button id="play-btn">Play</button>
+		<header>NoteLogger</header>
+		<div class="btnrow">
+			<button id="start-btn">Begin recording</button>
+			<button id="stop-btn">Stop recording</button>
+		</div>
+		<audio src=""></audio>
+		<div class="cbutton">
+			<button id="play-btn">Play</button>
+		</div>
+		<div class="cbutton">
+			<button id="save-btn">Save</button>
+		</div>
+		<div class="btnrow">
+			<button>Profile:[name]</button>
+			<button onclick="document.location='settings.html'">Settings</button>
+		</div>
+		<div class = cbutton>
+			<button>Exit</button>
+		</div>
 	</body>
 </html>
