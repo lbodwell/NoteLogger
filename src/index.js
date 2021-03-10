@@ -1,19 +1,18 @@
 const {app, BrowserWindow} = require("electron");
 const path = require("path");
 
-if (require("electron-squirrel-startup")) {
-	app.quit();
-}
-
 const createWindow = () => {
 	const mainWindow = new BrowserWindow({
 		width: 800,
 		height: 600,
+		webPreferences: {
+			preload: path.join(__dirname, "script-handler.js")
+		}
 	});
 
 	mainWindow.loadFile(path.join(__dirname, "index.html"));
 
-	//mainWindow.webContents.openDevTools();
+	mainWindow.webContents.openDevTools();
 };
 
 app.on("ready", createWindow);
@@ -29,3 +28,8 @@ app.on("activate", () => {
 		createWindow();
 	}
 });
+
+app.on("before-quit", () => {
+	// ioHook.unload();
+	// ioHook.stop
+})
