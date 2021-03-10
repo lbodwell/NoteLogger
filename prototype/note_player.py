@@ -19,19 +19,22 @@ input_mappings = {
 	"Q": 71,
 	"Tab": 72,
 	"Shift": 74,
-	"MouseLeft": 76,
-	"MouseRight": 77,
-	"MouseMiddle": 79,
-	"MouseX1": 81,
-	"MouseX2": 83
+	"Esc": 76,
+	"MouseLeft": 77,
+	"MouseRight": 79,
+	"MouseMiddle": 81,
+	"MouseX1": 83,
+	"MouseX2": 84
 }
+
 notes = []
 
 def determine_pitch(line):
 	pitch = None
 
 	input = line[(line.find(": ") + 2):].strip("\n")
-	pitch = input_mappings[input]
+	if (input in input_mappings):
+		pitch = input_mappings[input]
 
 	return pitch
 
@@ -90,7 +93,7 @@ def convert_notes(output):
 		next_line = None
 		if (index < len(output) - 1):
 			next_line = output[index + 1]
-		notes.append(Note(determine_pitch(line), determine_duration(line, next_line)))
+		notes.append(Note(determine_pitch(line), determine_duration(line, next_line)))                                                                                
 
 with open("log.txt", "r") as file:
 	convert_notes(file.readlines())
