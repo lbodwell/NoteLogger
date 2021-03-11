@@ -1,5 +1,7 @@
 .history
-prtotype/log.txt
+.vscode
+log.txt
+*/log.txt
 
 # Logs
 logs
