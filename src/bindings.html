@@ -4,35 +4,37 @@
     <meta charset="UTF-8">
     <title>Bindings</title>
     <link rel="stylesheet" href="style.css">
+    <script src="bindings.js"></script>
 </head>
 <body>
+
 <header>Bindings</header>
 <div class="binding">
     Example note 1
     <label>
-        <textarea>W</textarea>
+        <textarea id="note_1">W</textarea>
     </label>
 </div>
 <div class="binding">
     Example note 2
     <label>
-        <textarea>A</textarea>
+        <textarea id="note_2">A</textarea>
     </label>
 </div>
 <div class="binding">
     Example note 3
     <label>
-        <textarea>S</textarea>
+        <textarea id="note_3">S</textarea>
     </label>
 </div>
 <div class="binding">
     Example note 4
     <label>
-        <textarea>D</textarea>
+        <textarea id="note_4">D</textarea>
     </label>
 </div>
 <div class="cbutton">
-    <button onclick="document.location='settings.html'">Return</button>
+    <button onclick="mapBinds()">Return</button>
 </div>
 </body>
 </html>
