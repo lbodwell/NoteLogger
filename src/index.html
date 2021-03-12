@@ -4,6 +4,7 @@
 		<meta charset="UTF-8">
 		<title>NoteLogger</title>
 		<link rel="stylesheet" href="style.css">
+		<script src="../node_modules/tone/build/Tone.js"></script>
 		<script defer src="./render.js"></script>
 	</head>
 	<body>
@@ -21,10 +22,10 @@
 		</div>
 		<div class="btnrow">
 			<button>Profile:[name]</button>
-			<button onclick="document.location='settings.html'">Settings</button>
+			<button id="settings-btn">Settings</button>
 		</div>
 		<div class = cbutton>
-			<button>Exit</button>
+			<button id="exit-btn">Exit</button>
 		</div>
 	</body>
 </html>

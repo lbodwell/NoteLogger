@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const {contextBridge} = require("electron");
 const {spawn} = require("child_process");
 
 let keyLogger;
@@ -37,8 +36,4 @@ const readLog = () => {
 	}
 };
 
-contextBridge.exposeInMainWorld("electron", {
-	startKeyLogger,
-	stopKeyLogger,
-	readLog
-});
+module.exports = {startKeyLogger, stopKeyLogger, readLog}
