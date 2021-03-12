@@ -1,24 +1,34 @@
 header{
-	font-family: Arial;
-	margin-left: 50px;
-	font-size: large;
-	font-weight: bold;
-	padding-bottom: 20px;
+    font-family: Arial;
+    margin-left: 75px;
+    font-size: large;
+    font-weight: bold;
+    padding-bottom: 20px;
 }
 button{
-	font-family: Arial;
-	font-size: 16px;
-	border: medium black;
-	border-radius: 8px;
+    font-family: Arial;
+    font-size: medium;
+    border: medium black;
+    border-radius: 8px;
+}
+textarea{
+    font-family: Arial;
+    font-size: medium;
+}
+div.btnrow{
+    margin-left: 20px;
+    padding-bottom:10px;
 }
 
-div.btnrow{
-	position:center;
-	padding-bottom:10px;
-}
 
 div.cbutton{
-	position:center;
-	margin-left: 75px;
-	padding-bottom: 10px;
+    position:center;
+    margin-left: 90px;
+    padding-bottom: 10px;
+}
+
+div.binding{
+    font-family: Arial;
+    font-size: medium;
+    padding-bottom:15px;
 }
