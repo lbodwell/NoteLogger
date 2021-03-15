@@ -5,6 +5,11 @@ const settingsButton = document.getElementById("settings-btn");
 const exitButton = document.getElementById("exit-btn");
 
 let bpm = 120;
+let synthType = "triangle";
+let synthVolume = 0.5;
+
+let noteSequence = [];
+
 let inputMappings = {
 	"Z": "C4",
 	"X": "D4",
@@ -44,8 +49,6 @@ let inputMappings = {
 	"0": "Ds6",
 	"=": "Fs6",
 };
-let noteSequence = [];
-let synthType = "sine";
 
 startButton?.addEventListener("click", evt => {
 	evt.preventDefault();
@@ -78,26 +81,20 @@ playButton?.addEventListener("click", evt => {
 		console.log("here");
 		if (index > 0 ) {
 			const lastNote = noteSequence[index - 1];
-			console.log(lastNote);
-			const a = Tone.Time(lastNote.time).toSeconds();
-			const b = Tone.Time(lastNote.duration).toSeconds();
-			const timeMillis = a + b;
-			console.log(a + " + " + b + " = " + timeMillis);
-			// const testTime = Tone.Time(timeMillis).toNotation();
-			// console.log(testTime);
-			
-			time = Tone.Time(timeMillis).toBarsBeatsSixteenths();
-			console.log(time);
-			//time = timeMillis;
-			// console.log(time);
-		} else {
-			console.log("idx 0");
+			const timeSeconds = Tone.Time(lastNote.time).toSeconds() + Tone.Time(lastNote.duration).toSeconds();
+			time = Tone.Time(timeSeconds).toBarsBeatsSixteenths();
 		}
 		
 		noteSequence.push({pitch, duration, time});
 	});
-	const synth = new Tone.Synth().toDestination();
-	console.log(noteSequence);
+	const synth = new Tone.Synth({
+		oscillator : {
+			volume: synthVolume,
+			count: 3,
+			spread: 40,
+			type : synthType
+		  }
+	}).toDestination();
 	const part = new Tone.Part((time, note) => {
 		synth.triggerAttackRelease(note.pitch, note.duration, time);
 	}, noteSequence);
