@@ -31,4 +31,4 @@ app.on("activate", () => {
 
 ipcMain.on("close", (evt, arg) => {
 	app.quit();
-});
+}); 
