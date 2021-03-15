@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const {contextBridge} = require("electron");
 const {spawn} = require("child_process");
 
 let keyLogger;
@@ -32,13 +31,9 @@ const readLog = () => {
 		// TODO: error handling
 		const contents = fs.readFileSync(path.join(__dirname, "../log.txt"));
 		const lines = contents.toString().split("\n");
-		lines.pop();
+		lines.splice(lines.length - 2);
 		return lines;
 	}
 };
 
-contextBridge.exposeInMainWorld("electron", {
-	startKeyLogger,
-	stopKeyLogger,
-	readLog
-});
+module.exports = {startKeyLogger, stopKeyLogger, readLog}
