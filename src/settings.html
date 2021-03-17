@@ -7,10 +7,28 @@
 </head>
 <body>
 <header>Settings</header>
-<div class="btnrow">
+<div class="cbutton">
 	<button onclick="document.location='bindings.html'">Edit bindings</button>
-	<button>Precision: LOW</button>
-	<button>Instrument: Piano</button>
+</div>
+<div class="cbutton">
+	<label for="instruments"></label>
+	<select name="instruments" id="instruments">
+		<option value="inst1">Instrument 1</option>
+		<option value="inst2">Instrument 2</option>
+		<option value="inst3">Instrument 3</option>
+	</select>
+</div>
+<div class="ctext">
+	Precision
+</div>
+<div class="slidecont">
+	<input type="range" min="0" max="100" value="50" class="slider" id="vol">
+</div>
+<div class="ctext">
+	Volume
+</div>
+<div class="slidecont">
+	<input type="range" min="0" max="100" value="50" class="slider" id="vol">
 </div>
 <div class="btnrow">
 	<button>Preview Sample</button>
