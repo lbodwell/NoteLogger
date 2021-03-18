@@ -4,19 +4,54 @@
 	<meta charset="UTF-8">
 	<title>Settings</title>
 	<link rel="stylesheet" href="style.css">
+	<script defer src="settings.js"></script>
 </head>
 <body>
 <header>Settings</header>
-<div class="btnrow">
-	<button onclick="document.location='bindings.html'">Edit bindings</button>
-	<button>Precision: LOW</button>
-	<button>Instrument: Piano</button>
+<div class="cbutton">
+	<button onclick="saveSettings();document.location='bindings.html'">Edit bindings</button>
+</div>
+<div class="cbutton">
+	<label for="instruments"></label>
+	<select name="instruments" id="instruments">
+		<option value="inst1">Instrument 1</option>
+		<option value="inst2">Instrument 2</option>
+		<option value="inst3">Instrument 3</option>
+	</select>
+</div>
+<div class="ctext">
+	Precision
+</div>
+<div class="slidecont">
+	<input type="range" min="0" max="1" class="slider" id="precision">
+</div>
+<div class="ctext">
+	Volume
+</div>
+<div class="slidecont">
+	<input type="range" min="0" max="100" class="slider" id="volume">
+</div>
+<div class="ctext">
+	Reverb
+	<input type="checkbox" id="reverb">
+</div>
+<div class="ctext">
+	Chorus
+	<input type="checkbox" id="chorus">
+</div>
+<div class="ctext">
+	Filter
+	<input type="checkbox" id="filter">
+</div>
+<div class="ctext">
+	Delay
+	<input type="checkbox" id="delay">
 </div>
 <div class="btnrow">
-	<button>Preview Sample</button>
+	<button id="samplebtn">Preview Sample</button>
 </div>
 <div class="btnrow">
-	<button onclick = "document.location='index.html'">Save and return</button>
+	<button id="savesetbtn">Save and return</button>
 </div>
 </body>
 </html>

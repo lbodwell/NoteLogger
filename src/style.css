@@ -41,7 +41,30 @@ div.cbutton{
     align-items: center;
     padding-bottom: 10px;
 }
-
+.slidecont{
+    display: flex;
+    height: 25px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+.slider{
+    width:500px;
+    height:25px;
+}
+.ctext{
+    display: flex;
+    height: 25px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:center;
+    align-items: center;
+    font-family: Arial;
+    font-size: medium;
+    padding-bottom: 10px;
+}
 div.binding{
     font-family: Arial;
     font-size: medium;
