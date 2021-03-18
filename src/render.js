@@ -4,13 +4,13 @@ const playButton = document.getElementById("play-btn");
 const settingsButton = document.getElementById("settings-btn");
 const exitButton = document.getElementById("exit-btn");
 
-let bpm = 120;
-let synthType = "triangle";
-let synthVolume = 0.5;
+let bpm = 150;
+let synthType = "fatsawtooth";
+let synthVolume = 1.0;
+let inputMode = "mouse";
 
 let noteSequence = [];
-
-let inputMappings = {
+let keyboardBindings = {
 	"Z": "C4",
 	"X": "D4",
 	"C": "E4",
@@ -49,6 +49,13 @@ let inputMappings = {
 	"0": "Ds6",
 	"=": "Fs6",
 };
+let mouseBindings = {
+	"MouseLeft": "C4",
+	"MouseRight": "D4",
+	"MouseMiddle": "E4",
+	"MouseX1": "G4",
+	"MouseX2": "A4"
+};
 
 startButton?.addEventListener("click", evt => {
 	evt.preventDefault();
@@ -78,14 +85,15 @@ playButton?.addEventListener("click", evt => {
 		const pitch = getPitch(line);
 		const duration = getDuration(line, nextLine);
 		let time = 0;
-		console.log("here");
 		if (index > 0 ) {
 			const lastNote = noteSequence[index - 1];
 			const timeSeconds = Tone.Time(lastNote.time).toSeconds() + Tone.Time(lastNote.duration).toSeconds();
 			time = Tone.Time(timeSeconds).toBarsBeatsSixteenths();
 		}
+		if (pitch) {
+			noteSequence.push({pitch, duration, time});
+		}
 		
-		noteSequence.push({pitch, duration, time});
 	});
 	const synth = new Tone.Synth({
 		oscillator : {
@@ -99,6 +107,7 @@ playButton?.addEventListener("click", evt => {
 		synth.triggerAttackRelease(note.pitch, note.duration, time);
 	}, noteSequence);
 	part.start();
+
 });
 
 settingsButton?.addEventListener("click", evt => {
@@ -112,12 +121,18 @@ exitButton?.addEventListener("click", evt => {
 });
 
 const getPitch = line => {
-	let pitch = "C5";
-
+	let pitch;
 	const key = line.substring(line.indexOf(": ") + 2).trim();
-	if (inputMappings.hasOwnProperty(key)) {
-		pitch = inputMappings[key];
+	if (inputMode === "keyboard") {
+		if (keyboardBindings.hasOwnProperty(key)) {
+			pitch = keyboardBindings[key];
+		}
+	} else if (inputMode === "mouse") {
+		if (mouseBindings.hasOwnProperty(key)) {
+			pitch = mouseBindings[key];
+		}
 	}
+	
 	
 	return pitch;
 };
