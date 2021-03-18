@@ -4,58 +4,24 @@ const playButton = document.getElementById("play-btn");
 const settingsButton = document.getElementById("settings-btn");
 const exitButton = document.getElementById("exit-btn");
 
-let bpm = 150;
-let synthType = "fatsawtooth";
+let bpm = 120;
+let synthType = "triangle";
 let synthVolume = 1.0;
-let inputMode = "mouse";
 
 let noteSequence = [];
-let keyboardBindings = {
-	"Z": "C4",
-	"X": "D4",
-	"C": "E4",
-	"V": "F4",
-	"B": "G4",
-	"N": "A4",
-	"M": "B4",
-	",": "C5",
-	".": "D5",
-	"/": "E5",
-	"S": "Cs4",
-	"D": "Ds4",
-	"G": "Fs4",
-	"H": "Gs4",
-	"J": "As4",
-	"L": "Cs5",
-	";": "Ds5",
-	"Q": "C5",
-	"W": "D5",
-	"E": "E5",
-	"R": "F5",
-	"T": "G5",
-	"Y": "A5",
-	"U": "B5",
-	"I": "C6",
-	"O": "D6",
-	"P": "E6",
-	"[": "F6",
-	"]": "G6",
-	"2": "Cs5",
-	"3": "Ds5",
-	"5": "Fs5",
-	"6": "Gs5",
-	"7": "As5",
-	"9": "Cs6",
-	"0": "Ds6",
-	"=": "Fs6",
-};
-let mouseBindings = {
-	"MouseLeft": "C4",
-	"MouseRight": "D4",
-	"MouseMiddle": "E4",
-	"MouseX1": "G4",
-	"MouseX2": "A4"
-};
+
+let settings;
+let profiles; 
+let bindings;
+
+window.onload = () => {
+	settings = window.electron.loadSettings();
+	profiles = window.electron.loadProfiles();
+	bindings = profiles[0].bindings;
+	console.log(profiles);
+	console.log(bindings);
+	// TODO: add bindings to dropdown
+}
 
 startButton?.addEventListener("click", evt => {
 	evt.preventDefault();
@@ -123,16 +89,7 @@ exitButton?.addEventListener("click", evt => {
 const getPitch = line => {
 	let pitch;
 	const key = line.substring(line.indexOf(": ") + 2).trim();
-	if (inputMode === "keyboard") {
-		if (keyboardBindings.hasOwnProperty(key)) {
-			pitch = keyboardBindings[key];
-		}
-	} else if (inputMode === "mouse") {
-		if (mouseBindings.hasOwnProperty(key)) {
-			pitch = mouseBindings[key];
-		}
-	}
-	
+	pitch = bindings[key];
 	
 	return pitch;
 };
