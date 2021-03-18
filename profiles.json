@@ -2,6 +2,7 @@
 	{
 		"id": 0,
 		"name": "keyboard",
+		"default": "C5",
 		"bindings": {
 			"Z": "C4",
 			"X": "D4",
@@ -45,6 +46,7 @@
 	{
 		"id": 1,
 		"name": "mouse",
+		"default": "C4",
 		"bindings": {
 			"MouseLeft": "C4",
 			"MouseRight": "D4",
@@ -56,6 +58,7 @@
 	{
 		"id": 2,
 		"name": "mouse_and_keyboard",
+		"default": "C5",
 		"bindings": {
 			"MouseLeft": "C4",
 			"MouseRight": "D4",

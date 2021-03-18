@@ -51,14 +51,12 @@ playButton?.addEventListener("click", evt => {
 		const pitch = getPitch(line);
 		const duration = getDuration(line, nextLine);
 		let time = 0;
-		if (index > 0 ) {
+		if (index > 0) {
 			const lastNote = noteSequence[index - 1];
 			const timeSeconds = Tone.Time(lastNote.time).toSeconds() + Tone.Time(lastNote.duration).toSeconds();
 			time = Tone.Time(timeSeconds).toBarsBeatsSixteenths();
 		}
-		if (pitch) {
-			noteSequence.push({pitch, duration, time});
-		}
+		noteSequence.push({pitch, duration, time});
 		
 	});
 	const synth = new Tone.Synth({
@@ -87,9 +85,11 @@ exitButton?.addEventListener("click", evt => {
 });
 
 const getPitch = line => {
-	let pitch;
+	let pitch = "C5";
 	const key = line.substring(line.indexOf(": ") + 2).trim();
-	pitch = bindings[key];
+	if (bindings.hasOwnProperty(key)) {
+		pitch = bindings[key];
+	}
 	
 	return pitch;
 };

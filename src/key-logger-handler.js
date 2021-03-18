@@ -31,7 +31,7 @@ const readLog = () => {
 		// TODO: error handling
 		const contents = fs.readFileSync(path.join(__dirname, "../log.txt"));
 		const lines = contents.toString().split("\n");
-		lines.splice(lines.length - 1);
+		lines.splice(lines.length - 2);
 		return lines;
 	}
 };
